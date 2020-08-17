@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package caesar.iot;
+
+import "protobuf/sensor.proto";
+
+option go_package = "caesar/public/models/iot";
+
+// The Iot Server
+service IotServer {
+  // Get records of some sensor
+  rpc GetSensorRecords (iot.Request) returns (iot.Response);
+}
