@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package caesar.public.iot;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "caesar/public/iot";
+
+// Define a sensor
+message Sensor {
+  // The sensor id
+  string id = 1;
+  // The description of sensor, always sensor's name
+  string sensor_description = 3;
+}
+
+// Request body to fetch sensor records for iot server
+message Request {
+  // The request id
+  string request_id = 1;
+  // The sensor id
+  string sensor_id = 2;
+  // The options for querying data
+  QueryOptions options = 3;
+}
+
+// Response body from iot server
+message Response {
+  // The request id
+  string request_id = 1;
+  // The sensor id
+  string sensor_id = 2;
+  // The description of sensor, always sensor's name
+  string sensor_description = 3;
+  //
+  map<string, string> prop = 4;
+}
+
+// The options for querying data
+message QueryOptions {
+  // Only one option below will be accepted
+  oneof range {
+    // Server will return all records in the range
+    TimeRange time_range = 1;
+    // Server will return the latest [count] records
+    uint32 count = 2; // from the latest record
+  }
+}
+
+// Time range
+message TimeRange {
+  // Start time
+  google.protobuf.Timestamp start = 1;
+  // End Time
+  google.protobuf.Timestamp end = 2;
+}
