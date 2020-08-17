@@ -2,55 +2,37 @@ package db
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
-	"time"
 
-	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
+	mops "go.mongodb.org/mongo-driver/mongo/options"
 )
 
-func db() {
-	fmt.Println("hello world")
-	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb://localhost:27017"))
-
-	if err != nil {
-		fmt.Println(err.Error())
-		panic(err)
-	}
-
-	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
-  defer cancel()
-
-	err = client.Connect(ctx)
-	if err != nil {
-		fmt.Println(err.Error())
-		panic(err)
-  }
-
-  runTest(client)
+// Options 数据库选项
+type Options struct {
+  URL string
 }
 
-func runTest(client *mongo.Client)  {
-  ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
-  defer cancel()
-  c, err := client.Database("iot").Collection("iot").Find(ctx, bson.D{})
-  // ss, err := client.Database("iot").ListCollectionNames(ctx, bson.D{})
-  if err != nil {
-		fmt.Println(err.Error())
-		panic(err)
-  }
-  if c.Err() != nil {
-		fmt.Println(c.Err())
-		panic(c.Err())
-  }
+// New Create a mongodb client.
+func New(options Options) (*mongo.Client, error) {
+	// Set client options
+  clientOptions := mops.Client().ApplyURI(options.URL)
 
-  var m map[string]interface{}
+	// Connect to MongoDB
+	client, err := mongo.Connect(context.TODO(), clientOptions)
 
-  for c.Next(ctx) {
-    c.Decode(&m)
-    b, _ :=json.Marshal(m)
-    fmt.Println(string(b))
-  }
+	if err != nil {
+		return nil, err
+	}
+
+	// Check the connection
+	err = client.Ping(context.TODO(), nil)
+
+	if err != nil {
+		return nil, err
+	}
+
+	fmt.Println("Connected to MongoDB!")
+
+	return client, nil
 }
