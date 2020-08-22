@@ -1,0 +1,21 @@
+# Server Name
+name: caesar-main
+
+debug: true
+
+http:
+  enabled: true
+  host: 0.0.0.0
+  port: 8081
+
+https:
+  enabled: false
+  domain: "www.ronbb.fun ronbb.fun"
+  email: "ronbiaobiao@gmail.com"
+  host: 0.0.0.0
+  port: 443
+  autocert: true
+  fallback:
+    host: 0.0.0.0
+    port: 80
+    domain: https://www.ronbb.fun
