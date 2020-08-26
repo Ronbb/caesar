@@ -38,7 +38,9 @@
     "cSpell.words": [
         "protoimpl",
         "ptypes",
-        "shurcoo"
+        "shurcoo",
+        "timestamppb",
+        "wrapperspb"
     ],
     "cSpell.ignorePaths": [
         "**/package-lock.json",
