@@ -3,6 +3,9 @@ name: caesar-main
 
 debug: true
 
+database:
+  url: "mongodb://127.0.0.1:27017"
+
 http:
   enabled: true
   host: 0.0.0.0
