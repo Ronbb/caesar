@@ -6,8 +6,10 @@ import (
 )
 
 var (
-  // Database Mongodb database for caesar.
-	Database *mongo.Database
+  // database Mongodb database for caesar.
+  database *mongo.Database
+  // usersCol Mongodb collection with users' info.
+  usersCol *mongo.Collection
 )
 
 func init()  {
@@ -17,5 +19,6 @@ func init()  {
   if err != nil {
     panic(err)
   }
-  Database = client.Database("caesar")
+  database = client.Database("caesar")
+  usersCol = database.Collection("users")
 }
