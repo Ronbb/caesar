@@ -4,7 +4,7 @@ package caesar.iot;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "caesar/public/models/iot";
+option go_package = "public/models/iot";
 
 // Define a sensor
 message Sensor {

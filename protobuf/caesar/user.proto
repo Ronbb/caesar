@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package caesar.caesar;
+
+option go_package = "public/models/caesar";
+
+// UserInfo Exhaustive user infomation.
+message UserInfo {
+  // Username.
+  string username = 1;
+  // E-mail.
+  string email = 2;
+}
+
+// Authentication The infomation needed when signing in.
+message Authentication {
+  // Username.
+  string username = 1;
+  // Password.
+  string password = 2;
+}
+
+// UserRegistration
+message UserRegistration {
+  // Username.
+  string username = 1;
+  // Password.
+  string password = 2;
+  // E-mail.
+  string email = 3;
+}

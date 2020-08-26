@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package caesar.iot;
 
-import "protobuf/sensor.proto";
+import "protobuf/iot/sensor.proto";
 
-option go_package = "caesar/public/models/iot";
+option go_package = "public/models/iot";
 
 // The Iot Server
 service IotServer {
