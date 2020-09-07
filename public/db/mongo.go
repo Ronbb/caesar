@@ -10,13 +10,13 @@ import (
 
 // Options 数据库选项
 type Options struct {
-  URL string
+	URL string
 }
 
 // New Create a mongodb client.
 func New(options Options) (*mongo.Client, error) {
 	// Set client options
-  clientOptions := mops.Client().ApplyURI(options.URL)
+	clientOptions := mops.Client().ApplyURI(options.URL)
 
 	// Connect to MongoDB
 	client, err := mongo.Connect(context.TODO(), clientOptions)

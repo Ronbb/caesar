@@ -82,7 +82,7 @@ func validate() {
 		if err != nil {
 			return
 		}
-    println("Loaded config: ")
+		println("Loaded config: ")
 		println(string(b))
 	}
 }

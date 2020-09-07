@@ -22,8 +22,8 @@ func UserSignIn(user *caesar.Authentication) (*caesar.UserInfo, error) {
 	userInfo := &caesar.UserInfo{}
 	err := res.Decode(userInfo)
 	if err != nil {
-    log.Println(err.Error())
-    return nil, err
+		log.Println(err.Error())
+		return nil, err
 	}
 	return userInfo, nil
 }

@@ -48,9 +48,9 @@ func main() {
 			res.Message = err.Error()
 			ctx.Protobuf(&res)
 			return
-    }
-    res.Code = caesar.ResponseCode_SUCCESSFUL
-    res.Message = "Success"
+		}
+		res.Code = caesar.ResponseCode_SUCCESSFUL
+		res.Message = "Success"
 		res.Result.MarshalFrom(userInfo)
 		ctx.Protobuf(&res)
 	})
@@ -79,8 +79,8 @@ func main() {
 			ctx.Protobuf(&res)
 			return
 		}
-    res.Code = caesar.ResponseCode_SUCCESSFUL
-    res.Message = "Success"
+		res.Code = caesar.ResponseCode_SUCCESSFUL
+		res.Message = "Success"
 		ctx.Protobuf(&res)
 	})
 
@@ -92,7 +92,6 @@ func main() {
 	} else {
 		app.Listen(http.Address())
 	}
-
 }
 
 // Without this, the ACME HTTP-01 challenge would fail
