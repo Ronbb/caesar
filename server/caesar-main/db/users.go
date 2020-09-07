@@ -24,10 +24,10 @@ func UserSignUp(user *caesar.UserRegistration) error {
 	err := r.Decode(userInfo)
 
 	if err == nil {
-    err = errors.New("duplicate username")
+		err = errors.New("duplicate username")
 		log.Println(err.Error())
 		return err
-  }
+	}
 
 	if err.Error() != mongo.ErrNoDocuments.Error() {
 		log.Println(err.Error())
