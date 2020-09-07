@@ -23,9 +23,9 @@ message Response {
 // Code for response status.
 enum ResponseCode {
   // Default value.
-  UNSPECIFIED = 0;
+  RC_UNSPECIFIED = 0;
   // Successful.
-  SUCCESSFUL = 100;
+  RC_SUCCESSFUL = 1000;
   // Failed
-  FAILED = 200;
+  RC_FAILED = 2000;
 }

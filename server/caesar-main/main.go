@@ -29,7 +29,7 @@ func main() {
 		res.Time = timestamppb.Now()
 		b, err := ctx.GetBody()
 		if err != nil {
-			res.Code = caesar.ResponseCode_FAILED
+			res.Code = caesar.ResponseCode_RC_FAILED
 			res.Message = err.Error()
 			ctx.Protobuf(&res)
 			return
@@ -37,19 +37,19 @@ func main() {
 		auth := caesar.Authentication{}
 		err = proto.Unmarshal(b, &auth)
 		if err != nil {
-			res.Code = caesar.ResponseCode_FAILED
+			res.Code = caesar.ResponseCode_RC_FAILED
 			res.Message = err.Error()
 			ctx.Protobuf(&res)
 			return
 		}
 		userInfo, err := db.UserSignIn(&auth)
 		if err != nil {
-			res.Code = caesar.ResponseCode_FAILED
+			res.Code = caesar.ResponseCode_RC_FAILED
 			res.Message = err.Error()
 			ctx.Protobuf(&res)
 			return
 		}
-		res.Code = caesar.ResponseCode_SUCCESSFUL
+		res.Code = caesar.ResponseCode_RC_SUCCESSFUL
 		res.Message = "Success"
 		res.Result.MarshalFrom(userInfo)
 		ctx.Protobuf(&res)
@@ -59,7 +59,7 @@ func main() {
 		res := caesar.Response{}
 		b, err := ctx.GetBody()
 		if err != nil {
-			res.Code = caesar.ResponseCode_FAILED
+			res.Code = caesar.ResponseCode_RC_FAILED
 			res.Message = err.Error()
 			ctx.Protobuf(&res)
 			return
@@ -67,19 +67,19 @@ func main() {
 		auth := caesar.UserRegistration{}
 		err = proto.Unmarshal(b, &auth)
 		if err != nil {
-			res.Code = caesar.ResponseCode_FAILED
+			res.Code = caesar.ResponseCode_RC_FAILED
 			res.Message = err.Error()
 			ctx.Protobuf(&res)
 			return
 		}
 		err = db.UserSignUp(&auth)
 		if err != nil {
-			res.Code = caesar.ResponseCode_FAILED
+			res.Code = caesar.ResponseCode_RC_FAILED
 			res.Message = err.Error()
 			ctx.Protobuf(&res)
 			return
 		}
-		res.Code = caesar.ResponseCode_SUCCESSFUL
+		res.Code = caesar.ResponseCode_RC_SUCCESSFUL
 		res.Message = "Success"
 		ctx.Protobuf(&res)
 	})

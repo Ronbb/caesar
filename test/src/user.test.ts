@@ -34,6 +34,6 @@ test("should load user.proto", async () => {
 
   const data = Response.decode(res.data);
 
-  expect(data.toJSON()).toHaveProperty("code", "SUCCESSFUL");
+  expect(data.toJSON()).toHaveProperty("code", "RC_SUCCESSFUL");
 });
 
