@@ -13,7 +13,7 @@ require (
 	github.com/onsi/ginkgo v1.14.0 // indirect
 	github.com/smartystreets/goconvey v1.6.4 // indirect
 	github.com/yudai/pp v2.0.1+incompatible // indirect
-	go.mongodb.org/mongo-driver v1.4.0
+	go.mongodb.org/mongo-driver v1.5.1
 	go.uber.org/config v1.4.0
 	golang.org/x/sync v0.0.0-20200625203802-6e8e738ad208 // indirect
 	golang.org/x/sys v0.0.0-20200817155316-9781c653f443 // indirect
